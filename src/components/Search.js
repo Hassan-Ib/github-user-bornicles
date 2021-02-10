@@ -9,7 +9,6 @@ const Search = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = inputRef.current.value;
-    console.log(user);
     if (!user) return;
     searchGithubUser(user);
     inputRef.current.value = "";

@@ -55,15 +55,11 @@ const GithubProvider = ({ children }) => {
   const checkRequest = async () => {
     try {
       const res = await axios(`${rootUrl}/rate_limit`);
-      // axios returns a javascript object
       let {
         data: {
           rate: { remaining },
         },
       } = res;
-
-      // remaining = 0;
-
       setRequest(remaining);
       if (remaining === 0) {
         toggleError(true, "sorry, you have exceeded your hourly rate limit!.");
@@ -78,7 +74,7 @@ const GithubProvider = ({ children }) => {
   }
   useEffect(() => {
     checkRequest();
-  }, []);
+  });
 
   return (
     <GithubContext.Provider
@@ -102,4 +98,4 @@ const useGithubContext = () => {
   return value;
 };
 
-export { GithubContext, GithubProvider, useGithubContext };
+export { GithubProvider, useGithubContext };
