@@ -21,7 +21,7 @@ const GithubProvider = ({ children }) => {
       toggleError();
       setIsloading(true);
       const response = await axios(`${rootUrl}/users/${user}`);
-      console.log(response);
+      // console.log(response);
       if (response) {
         setGithubUser(response.data);
         const { login, followers_url } = response.data;
@@ -29,7 +29,8 @@ const GithubProvider = ({ children }) => {
         //   `${rootUrl}/users/${login}/repos?per_page=100`
         // );
         // const followersRes = await axios(`${followers_url}?per_page=100`);
-
+        // setRepos(reposRes.data);
+        // setFollowers(followersRes.data);
         const results = await Promise.allSettled([
           axios(`${rootUrl}/users/${login}/repos?per_page=100`),
           axios(`${followers_url}?per_page=100`),
@@ -42,9 +43,6 @@ const GithubProvider = ({ children }) => {
         if (followersRes.status === status) {
           setFollowers(followersRes.value.data);
         }
-        console.log(results);
-        // setRepos(reposRes.data);
-        // setFollowers(followersRes.data);
       }
       setIsloading(false);
     } catch (error) {

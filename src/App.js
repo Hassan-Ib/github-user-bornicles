@@ -7,9 +7,9 @@ function App() {
     <div>
       <Router>
         <Switch>
-          <Route exact path="/">
+          <PrivateRoute exact path="/">
             <Dashboard></Dashboard>
-          </Route>
+          </PrivateRoute>
           <Route path="/login">
             <Login />
           </Route>
