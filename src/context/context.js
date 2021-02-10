@@ -68,7 +68,7 @@ const GithubProvider = ({ children }) => {
       if (remaining === 0) {
         toggleError(true, "sorry, you have exceeded your hourly rate limit!.");
       }
-      console.log("checkRequest : is  async", remaining);
+      // console.log("checkRequest : is  async", remaining);
     } catch (err) {
       console.log(err);
     }

@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div>
+    <AuthWrapper>
       <Router>
         <Switch>
           <PrivateRoute exact path="/">
@@ -18,7 +18,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </div>
+    </AuthWrapper>
   );
 }
 
