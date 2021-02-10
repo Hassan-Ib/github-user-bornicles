@@ -24,7 +24,27 @@ const GithubProvider = ({ children }) => {
       console.log(response);
       if (response) {
         setGithubUser(response.data);
-        //more logic here
+        const { login, followers_url } = response.data;
+        // const reposRes = await axios(
+        //   `${rootUrl}/users/${login}/repos?per_page=100`
+        // );
+        // const followersRes = await axios(`${followers_url}?per_page=100`);
+
+        const results = await Promise.allSettled([
+          axios(`${rootUrl}/users/${login}/repos?per_page=100`),
+          axios(`${followers_url}?per_page=100`),
+        ]);
+        const [reposRes, followersRes] = results;
+        const status = "fulfilled";
+        if (reposRes.status === status) {
+          setRepos(reposRes.value.data);
+        }
+        if (followersRes.status === status) {
+          setFollowers(followersRes.value.data);
+        }
+        console.log(results);
+        // setRepos(reposRes.data);
+        // setFollowers(followersRes.data);
       }
       setIsloading(false);
     } catch (error) {
