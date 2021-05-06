@@ -5,7 +5,12 @@ import { useGithubContext } from "../context/context";
 const Search = () => {
   const inputRef = React.useRef();
   //get things from global;
-  const { request, error, searchGithubUser, isLoading } = useGithubContext();
+  const {
+    requestRate,
+    error,
+    searchGithubUser,
+    isLoading,
+  } = useGithubContext();
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = inputRef.current.value;
@@ -25,10 +30,12 @@ const Search = () => {
           <div className="form-control">
             <MdSearch></MdSearch>
             <input type="text" ref={inputRef} placeholder="enter github user" />
-            {request > 0 && !isLoading && <button type="submit">search</button>}
+            {requestRate > 0 && !isLoading && (
+              <button type="submit">search</button>
+            )}
           </div>
         </form>
-        <h3>Request : {request}/ 60</h3>
+        <h3>Request : {requestRate}/ 60</h3>
       </Wrapper>
     </section>
   );
