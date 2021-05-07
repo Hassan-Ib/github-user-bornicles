@@ -74,22 +74,22 @@ const Wrapper = styled.div`
     }
     button {
       border-radius: 5px;
-      border-color: transparent;
-      padding: 0.25rem 0.5rem;
+      border-color: var(--clr-black);
+      padding: 0.4rem 0.8rem;
       text-transform: capitalize;
       letter-spacing: var(--spacing);
-      background: var(--clr-primary-5);
+      background: var(--clr-black);
       color: var(--clr-white);
       transition: var(--transition);
       cursor: pointer;
       &:hover {
-        background: var(--clr-primary-8);
-        color: var(--clr-primary-1);
+        background: var(--clr-white);
+        color: var(--clr-black);
       }
     }
 
     svg {
-      color: var(--clr-grey-5);
+      color: var(--clr-black);
     }
     input,
     button,
@@ -106,7 +106,7 @@ const Wrapper = styled.div`
   }
   h3 {
     margin-bottom: 0;
-    color: var(--clr-grey-5);
+    color: var(--clr-black);
     font-weight: 400;
   }
 `;

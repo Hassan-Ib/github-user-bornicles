@@ -4,7 +4,9 @@ import { useGithubContext } from "../context/context";
 import { Pie3D, Column3D, Bar3D, Doughnut2D } from "./Charts";
 const Repos = () => {
   const { repos } = useGithubContext();
-  // console.log(repos);
+  if (!repos) {
+    return <h1>user Repo</h1>;
+  }
   const languages = repos.reduce((total, item) => {
     const { language, stargazers_count } = item;
     if (!language) return total;

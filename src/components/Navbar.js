@@ -6,7 +6,7 @@ const Navbar = () => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
   // console.log(isAuthenticated, user, isLoading);
   const isUser = isAuthenticated && user;
-
+  console.log(window.location.origin);
   return (
     <Wrapper>
       {isUser && user.picture && <img src={user.picture} alt={user.name} />}
