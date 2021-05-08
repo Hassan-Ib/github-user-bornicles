@@ -30,6 +30,7 @@ const Wrapper = styled.section`
     height: 40vh;
   }
   h1 {
+    font-size: 3rem;
     margin-bottom: 1.5rem;
     color: var(--clr-black);
   }

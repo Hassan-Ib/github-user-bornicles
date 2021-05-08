@@ -1,5 +1,12 @@
 import React from "react";
-import { Dashboard, Login, PrivateRoute, AuthWrapper, Error } from "./pages";
+import {
+  Dashboard,
+  Login,
+  PrivateRoute,
+  AuthWrapper,
+  Error,
+  SearchModal,
+} from "./pages";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -7,7 +14,10 @@ function App() {
     <AuthWrapper>
       <Router>
         <Switch>
-          <PrivateRoute exact path="/">
+          <Route>
+            <SearchModal />
+          </Route>
+          <PrivateRoute exact path="/dashboard">
             <Dashboard />
           </PrivateRoute>
           <Route path="/login">
