@@ -1,28 +1,26 @@
 import React from "react";
 import styled from "styled-components";
-import { Search } from "../components";
+import { Search as SearchInput } from "../components";
 import githubSvg from "../images/github.svg";
 
 const SearchModalWrapper = styled.section`
   position: relative;
   display: grid;
-  place-content: center;
+  /* place-content: center; */
+  place-items: center;
 `;
 const Modal = styled.div`
+  display: grid;
+  place-items: center;
   img {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     height: 40vh;
   }
   svg {
     color: black;
   }
 `;
-const SearchInput = styled(Search)`
-  form {
-    border: 2px solid black;
-    background-color: blue;
-  }
-`;
+
 const Overlay = styled.div`
   height: 100vh;
   width: 100%;
@@ -36,7 +34,8 @@ const SearchModal = () => {
       <Overlay></Overlay>
       <Modal>
         <img src={githubSvg} alt="github user" />
-        <SearchInput />
+        <h4>search github user</h4>
+        <SearchInput border={"2px solid black"} />
       </Modal>
     </SearchModalWrapper>
   );

@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { MdSearch } from "react-icons/md";
 import { useGithubContext } from "../context/context";
-const Search = () => {
+import { useHistory, useLocation } from "react-router-dom";
+const Search = ({ border }) => {
   const inputRef = React.useRef();
   const {
     requestRate,
@@ -10,31 +11,35 @@ const Search = () => {
     searchGithubUser,
     isLoading,
   } = useGithubContext();
+
+  const { pathname } = useLocation();
+  const history = useHistory();
+
   console.warn();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (pathname !== "/dashboard") {
+      history.push("/dashboard");
+    }
     const user = inputRef.current.value;
     if (!user) return;
     searchGithubUser(user);
     inputRef.current.value = "";
   };
   return (
-    <section className="section">
-      <Wrapper className="section-center">
-        {error.show && (
-          <ErrorWrapper>
-            <p>{error.msg}</p>
-          </ErrorWrapper>
-        )}
-        <FormControl action="" onSubmit={handleSubmit}>
-          <MdSearch></MdSearch>
-          <input type="text" ref={inputRef} placeholder="enter github user" />
-          {requestRate > 0 && !isLoading && (
-            <button type="submit">search</button>
-          )}
-        </FormControl>
-      </Wrapper>
-    </section>
+    <Wrapper className="section-center">
+      {error.show && (
+        <ErrorWrapper>
+          <p>{error.msg}</p>
+        </ErrorWrapper>
+      )}
+      <FormControl border={border} action="" onSubmit={handleSubmit}>
+        <MdSearch></MdSearch>
+        <input type="text" ref={inputRef} placeholder="enter github user" />
+        {requestRate > 0 && !isLoading && <button type="submit">search</button>}
+      </FormControl>
+    </Wrapper>
   );
 };
 
@@ -48,6 +53,7 @@ const FormControl = styled.form`
   padding: 0.5rem;
   width: 70%;
   margin: 0 auto;
+  border: ${(props) => props.border || "none"};
   input {
     border-color: transparent;
     outline-color: var(--clr-grey-10);
@@ -104,6 +110,7 @@ const Wrapper = styled.div`
 
 const ErrorWrapper = styled.article`
   position: absolute;
+  margin-bottom: 0.5rem;
   width: 90vw;
   top: 0;
   left: 0;
