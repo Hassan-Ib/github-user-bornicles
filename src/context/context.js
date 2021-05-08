@@ -77,6 +77,17 @@ const GithubProvider = ({ children }) => {
     checkRequestRate();
   });
 
+  useEffect(() => {
+    let timeOut;
+    if (error.show) {
+      timeOut = setTimeout(toggleError, 1000);
+    }
+    return () => {
+      if (timeOut) {
+        clearTimeout(timeOut);
+      }
+    };
+  });
   return (
     <GithubContext.Provider
       value={{

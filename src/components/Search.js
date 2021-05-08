@@ -44,16 +44,20 @@ const Search = ({ border }) => {
 };
 
 const FormControl = styled.form`
-  background: var(--clr-white);
   display: grid;
-  align-items: center;
   grid-template-columns: auto 1fr auto;
   column-gap: 0.5rem;
+  align-items: center;
+
+  background: var(--clr-white);
+
   border-radius: 10px;
+  border: ${(props) => props.border || "none"};
   padding: 0.5rem;
   width: 70%;
   margin: 0 auto;
-  border: ${(props) => props.border || "none"};
+  margin-bottom: 1rem;
+
   input {
     border-color: transparent;
     outline-color: var(--clr-grey-10);

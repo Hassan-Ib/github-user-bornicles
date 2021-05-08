@@ -1,7 +1,6 @@
 import React from "react";
 import { Dashboard, Login, Error, SearchModal } from "./pages";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 function App() {
   return (
     <Router>

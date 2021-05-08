@@ -1,9 +1,4 @@
-## Starter Project
-
-- css provided (global styles, styled components)
-- folders/files already setup
-- all imports included (warnings)
-- index.js for easier imports
+# Credit to John Smilga from [Coding Addict youtube channel](https://www.youtube.com/results?search_query=coding+addict) for amazing contents on youtube
 
 ## Styled Components
 
@@ -31,8 +26,8 @@ export default ReactComponent
 [React Icons - Main Docs](https://react-icons.github.io/react-icons/)
 
 ```jsx
-import { FiUsers, FiUserPlus } from 'react-icons/fi';
-<FiUsers className='nameOfTheClass'> </FiUsers>;
+import { FiUsers, FiUserPlus } from "react-icons/fi";
+<FiUsers className="nameOfTheClass"> </FiUsers>;
 ```
 
 ## React Router Dom
@@ -61,7 +56,7 @@ version used - "react-router-dom": "^5.2.0",
 - [List Of Charts](https://www.fusioncharts.com/dev/chart-guide/list-of-charts)
 - [Themes](https://www.fusioncharts.com/dev/themes/introduction-to-themes)
 
-## Auth0
+## Auth0 useage -removed
 
 - [Auth0 - Main Docs](https://auth0.com/)
 

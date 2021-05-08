@@ -2,6 +2,7 @@ import React from "react";
 import { Info, Repos, User, Search, Navbar } from "../components";
 import loadingImage from "../images/preloader.gif";
 import { useGithubContext } from "../context/context";
+
 const Dashboard = () => {
   const { isLoading } = useGithubContext();
   if (isLoading) {
