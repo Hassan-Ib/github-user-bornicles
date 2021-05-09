@@ -2,39 +2,35 @@ import React from "react";
 import styled from "styled-components";
 import { MdSearch } from "react-icons/md";
 import { useGithubContext } from "../context/context";
-import { useHistory, useLocation } from "react-router-dom";
-const Search = ({ border }) => {
+import { useHistory, useLocation } from "react-router";
+
+const Search = ({ className }) => {
   const inputRef = React.useRef();
+
   const {
+    githubUser,
     requestRate,
-    error,
-    searchGithubUser,
+    getGithubUser,
     isLoading,
   } = useGithubContext();
-
-  const { pathname } = useLocation();
+  const { pathName } = useLocation();
   const history = useHistory();
-
-  console.warn();
+  console.log({ githubUser });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (pathname !== "/dashboard") {
-      history.push("/dashboard");
-    }
     const user = inputRef.current.value;
     if (!user) return;
-    searchGithubUser(user);
+    getGithubUser(user); // async
     inputRef.current.value = "";
+    if (pathName !== "/dashboard") {
+      history.push("/dashboard");
+    }
   };
+
   return (
     <Wrapper className="section-center">
-      {error.show && (
-        <ErrorWrapper>
-          <p>{error.msg}</p>
-        </ErrorWrapper>
-      )}
-      <FormControl border={border} action="" onSubmit={handleSubmit}>
+      <FormControl className={className} action="" onSubmit={handleSubmit}>
         <MdSearch></MdSearch>
         <input type="text" ref={inputRef} placeholder="enter github user" />
         {requestRate > 0 && !isLoading && <button type="submit">search</button>}
@@ -112,17 +108,4 @@ const Wrapper = styled.div`
   }
 `;
 
-const ErrorWrapper = styled.article`
-  position: absolute;
-  margin-bottom: 0.5rem;
-  width: 90vw;
-  top: 0;
-  left: 0;
-  transform: translateY(-100%);
-  text-transform: capitalize;
-  p {
-    color: red;
-    letter-spacing: var(--spacing);
-  }
-`;
 export default Search;

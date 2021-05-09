@@ -16,7 +16,7 @@ const GithubProvider = ({ children }) => {
   const [isLoading, setIsloading] = useState(false);
   const [error, setError] = useState({ show: false, msg: "" });
 
-  const searchGithubUser = async (user) => {
+  const getGithubUser = async (user) => {
     try {
       toggleError();
       setIsloading(true);
@@ -47,7 +47,6 @@ const GithubProvider = ({ children }) => {
     } catch (error) {
       toggleError(true, "there is no user with that UserName!.");
       setIsloading(false);
-      //console.log(error);
     }
   };
   //check rate
@@ -61,9 +60,11 @@ const GithubProvider = ({ children }) => {
       } = res;
       setRequestRate(remaining);
       if (remaining === 0) {
-        toggleError(true, "sorry, you have exceeded your hourly rate limit!.");
+        toggleError(
+          true,
+          "sorry, you've exceeded your hourly request limit :)!."
+        );
       }
-      // console.log("checkRequestRate : is  async", remaining);
     } catch (err) {
       console.log(err);
     }
@@ -96,7 +97,7 @@ const GithubProvider = ({ children }) => {
         followers,
         requestRate,
         error,
-        searchGithubUser,
+        getGithubUser,
         isLoading,
       }}
     >

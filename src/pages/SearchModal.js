@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Search as SearchInput } from "../components";
+import { Search } from "../components";
 import githubSvg from "../images/github.svg";
 import { Footer } from "../components";
 
@@ -11,7 +11,7 @@ const SearchModal = () => {
       <Modal>
         <img src={githubSvg} alt="github user" />
         <h4>search github user</h4>
-        <SearchInput border={"2px solid black"} />
+        <SearchInput />
       </Modal>
       <SearchModalFooter />
     </SearchModalWrapper>
@@ -23,7 +23,7 @@ const SearchModalFooter = styled(Footer)`
   place-items: center;
 
   position: absolute;
-  bottom: 1rem;
+  bottom: 0;
 
   padding: 0 1rem;
 `;
@@ -31,10 +31,15 @@ const SearchModalWrapper = styled.section`
   display: grid;
   place-items: center;
 
-  height: 100vh;
+  height: 90vh;
 
   position: relative;
 `;
+
+const SearchInput = styled(Search)`
+  border: 2px solid black;
+`;
+
 const Modal = styled.div`
   display: grid;
   place-items: center;
