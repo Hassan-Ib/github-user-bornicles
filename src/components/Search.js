@@ -7,12 +7,8 @@ import { useHistory, useLocation } from "react-router";
 const Search = ({ className }) => {
   const inputRef = React.useRef();
 
-  const {
-    githubUser,
-    requestRate,
-    getGithubUser,
-    isLoading,
-  } = useGithubContext();
+  const { githubUser, requestRate, getGithubUser, isLoading } =
+    useGithubContext();
   const { pathName } = useLocation();
   const history = useHistory();
   console.log({ githubUser });
@@ -30,16 +26,16 @@ const Search = ({ className }) => {
 
   return (
     <Wrapper className="section-center">
-      <FormControl className={className} action="" onSubmit={handleSubmit}>
+      <FormControlStyle className={className} action="" onSubmit={handleSubmit}>
         <MdSearch></MdSearch>
         <input type="text" ref={inputRef} placeholder="enter github user" />
         {requestRate > 0 && !isLoading && <button type="submit">search</button>}
-      </FormControl>
+      </FormControlStyle>
     </Wrapper>
   );
 };
 
-const FormControl = styled.form`
+const FormControlStyle = styled.form`
   display: grid;
   grid-template-columns: auto 1fr auto;
   column-gap: 0.5rem;
