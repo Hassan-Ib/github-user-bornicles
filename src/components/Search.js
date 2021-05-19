@@ -7,11 +7,9 @@ import { useHistory, useLocation } from "react-router";
 const Search = ({ className }) => {
   const inputRef = React.useRef();
 
-  const { githubUser, requestRate, getGithubUser, isLoading } =
-    useGithubContext();
+  const { requestRate, getGithubUser, isLoading } = useGithubContext();
   const { pathName } = useLocation();
   const history = useHistory();
-  console.log({ githubUser });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,7 +50,7 @@ const FormControlStyle = styled.form`
 
   input {
     border-color: transparent;
-    outline-color: var(--clr-grey-10);
+    outline-color: var(--clr-grey-9);
     letter-spacing: var(--spacing);
     color: var(--clr-grey-3);
     padding: 0.25rem 0.5rem;

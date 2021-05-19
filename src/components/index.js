@@ -5,4 +5,4 @@ export { default as Search } from "./Search";
 export { default as Navbar } from "./Navbar";
 export { default as Footer } from "./Footer";
 export { default as Error } from "./Error";
-//export { Info, Repos, User, Search, Navbar };
+export { default as Loader } from "./Loader";

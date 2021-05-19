@@ -1,16 +1,24 @@
 import React from "react";
-import { Info, Repos, User, Search, Navbar, Error } from "../components";
-import loadingImage from "../images/preloader.gif";
+import {
+  Loader,
+  Info,
+  Repos,
+  User,
+  Search,
+  Navbar,
+  Error,
+} from "../components";
 import { useGithubContext } from "../context/context";
 
 const Dashboard = () => {
   const { isLoading, error } = useGithubContext();
+  console.log(error);
   if (isLoading) {
     return (
       <main>
         <Navbar />
         <Search />
-        <img src={loadingImage} alt="loading" className="loading-img" />
+        <Loader />
       </main>
     );
   }
@@ -20,7 +28,6 @@ const Dashboard = () => {
         <Navbar />
         <Search />
         <Error />
-        <img src="" alt="" />
       </main>
     );
   }

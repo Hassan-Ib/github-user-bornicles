@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { MdBusiness, MdLocationOn, MdLink } from "react-icons/md";
 const Card = () => {
   const { githubUser } = useGithubContext();
-  console.log(githubUser);
 
   if (!githubUser) {
     return <h1>user card </h1>;

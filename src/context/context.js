@@ -1,7 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-// import mockUser from "./mockData.js/mockUser";
-// import mockRepos from "./mockData.js/mockRepos";
-// import mockFollowers from "./mockData.js/mockFollowers";
 import axios from "axios";
 
 const rootUrl = "https://api.github.com";
@@ -20,53 +17,57 @@ const GithubProvider = ({ children }) => {
     try {
       toggleError();
       setIsloading(true);
-      const response = await axios(`${rootUrl}/users/${user}`);
+      const response = await Promise.all(axios(`${rootUrl}/users/${user}`));
+
       if (response) {
         setGithubUser(response.data);
         const { login, followers_url } = response.data;
-        // const reposRes = await axios(
-        //   `${rootUrl}/users/${login}/repos?per_page=100`
-        // );
-        // const followersRes = await axios(`${followers_url}?per_page=100`);
-        // setRepos(reposRes.data);
-        // setFollowers(followersRes.data);
         const results = await Promise.allSettled([
           axios(`${rootUrl}/users/${login}/repos?per_page=100`),
           axios(`${followers_url}?per_page=100`),
         ]);
+
         const [reposRes, followersRes] = results;
         const status = "fulfilled";
         if (reposRes.status === status) {
           setRepos(reposRes.value.data);
         }
+
         if (followersRes.status === status) {
           setFollowers(followersRes.value.data);
         }
       }
+
       setIsloading(false);
     } catch (error) {
+      console.log("search error : ", error);
       toggleError(true, "there is no user with that UserName!.");
+
       setIsloading(false);
     }
   };
+
   //check rate
+
   const checkRequestRate = async () => {
-    try {
-      const res = await axios(`${rootUrl}/rate_limit`);
-      let {
-        data: {
-          rate: { remaining },
-        },
-      } = res;
-      setRequestRate(remaining);
-      if (remaining === 0) {
-        toggleError(
-          true,
-          "sorry, you've exceeded your hourly request limit :)!."
-        );
+    if (githubUser) {
+      try {
+        const res = await axios(`${rootUrl}/rate_limit`);
+        let {
+          data: {
+            rate: { remaining },
+          },
+        } = res;
+        setRequestRate(remaining);
+        if (remaining === 0) {
+          toggleError(
+            true,
+            "sorry, you've exceeded your hourly request limit :)!."
+          );
+        }
+      } catch (err) {
+        console.log(err);
       }
-    } catch (err) {
-      console.log(err);
     }
   };
 
