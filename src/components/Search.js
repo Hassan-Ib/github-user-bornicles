@@ -8,16 +8,16 @@ const Search = ({ className }) => {
   const inputRef = React.useRef();
 
   const { requestRate, getGithubUser, isLoading } = useGithubContext();
-  const { pathName } = useLocation();
+  const { pathname } = useLocation();
   const history = useHistory();
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = inputRef.current.value;
     if (!user) return;
     getGithubUser(user); // async
     inputRef.current.value = "";
-    if (pathName !== "/dashboard") {
+    if (pathname !== "/dashboard") {
+      console.log("dashboard pushed");
       history.push("/dashboard");
     }
   };
