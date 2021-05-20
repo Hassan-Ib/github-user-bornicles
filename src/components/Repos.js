@@ -9,8 +9,6 @@ const Repos = () => {
     return <></>;
   }
 
-  console.log({ repos });
-
   const languages = repos.reduce((total, item) => {
     const { language, stargazers_count } = item;
     if (!language) return total;

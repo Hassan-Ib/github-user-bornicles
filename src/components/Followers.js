@@ -5,7 +5,7 @@ import styled from "styled-components";
 const Followers = () => {
   const { followers } = useGithubContext();
   if (!followers) {
-    return <h1> follower card</h1>;
+    return <></>;
   }
   return (
     <Wrapper>

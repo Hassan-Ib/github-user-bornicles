@@ -19,7 +19,10 @@ const Error = () => {
 const StyledSection = styled.section`
   display: grid;
   place-items: center;
-  height: 100vh;
+  height: 40vh;
+  div {
+    text-align: center;
+  }
 
   img {
     width: 200px;
@@ -29,7 +32,8 @@ const StyledSection = styled.section`
   a {
     outline: var(--clr-primary-4);
     border: 2px solid black;
-    border-radius: 10px;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
   }
 `;
 

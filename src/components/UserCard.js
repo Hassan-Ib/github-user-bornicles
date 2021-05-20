@@ -6,10 +6,8 @@ const Card = () => {
   const { githubUser } = useGithubContext();
 
   if (!githubUser) {
-    return <h1>user card </h1>;
+    return <></>;
   }
-
-  console.log({ githubUser });
 
   const {
     avatar_url,

@@ -6,6 +6,9 @@ import { useHistory, useLocation } from "react-router";
 
 const Search = ({ className }) => {
   const inputRef = React.useRef();
+  React.useEffect(() => {
+    inputRef.current.focus();
+  });
 
   const { requestRate, getGithubUser, isLoading } = useGithubContext();
   const { pathname } = useLocation();
@@ -17,7 +20,6 @@ const Search = ({ className }) => {
     getGithubUser(user); // async
     inputRef.current.value = "";
     if (pathname !== "/dashboard") {
-      console.log("dashboard pushed");
       history.push("/dashboard");
     }
   };
