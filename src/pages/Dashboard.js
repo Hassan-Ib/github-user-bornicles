@@ -12,25 +12,13 @@ import { useGithubContext } from "../context/context";
 
 const Dashboard = () => {
   const { isLoading, error } = useGithubContext();
-  console.log(error);
   if (isLoading) {
-    return (
-      <main>
-        <Navbar />
-        <Search />
-        <Loader />
-      </main>
-    );
+    return <Loader />;
   }
   if (error.show) {
-    return (
-      <main>
-        <Navbar />
-        <Search />
-        <Error />
-      </main>
-    );
+    return <Error />;
   }
+
   return (
     <main>
       <Navbar />

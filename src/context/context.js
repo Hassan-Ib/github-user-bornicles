@@ -17,7 +17,7 @@ const GithubProvider = ({ children }) => {
     try {
       toggleError();
       setIsloading(true);
-      const response = await Promise.all(axios(`${rootUrl}/users/${user}`));
+      const response = await axios(`${rootUrl}/users/${user}`);
 
       if (response) {
         setGithubUser(response.data);
@@ -40,9 +40,7 @@ const GithubProvider = ({ children }) => {
 
       setIsloading(false);
     } catch (error) {
-      console.log("search error : ", error);
       toggleError(true, "there is no user with that UserName!.");
-
       setIsloading(false);
     }
   };
@@ -50,24 +48,22 @@ const GithubProvider = ({ children }) => {
   //check rate
 
   const checkRequestRate = async () => {
-    if (githubUser) {
-      try {
-        const res = await axios(`${rootUrl}/rate_limit`);
-        let {
-          data: {
-            rate: { remaining },
-          },
-        } = res;
-        setRequestRate(remaining);
-        if (remaining === 0) {
-          toggleError(
-            true,
-            "sorry, you've exceeded your hourly request limit :)!."
-          );
-        }
-      } catch (err) {
-        console.log(err);
+    try {
+      const res = await axios(`${rootUrl}/rate_limit`);
+      let {
+        data: {
+          rate: { remaining },
+        },
+      } = res;
+      setRequestRate(remaining);
+      if (remaining === 0) {
+        toggleError(
+          true,
+          "sorry, you've exceeded your hourly request limit :)!."
+        );
       }
+    } catch (err) {
+      console.log(err);
     }
   };
 

@@ -9,6 +9,8 @@ const Card = () => {
     return <h1>user card </h1>;
   }
 
+  console.log(githubUser);
+
   const {
     avatar_url,
     html_url,
