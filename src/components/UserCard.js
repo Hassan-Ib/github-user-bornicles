@@ -9,7 +9,7 @@ const Card = () => {
     return <h1>user card </h1>;
   }
 
-  console.log(githubUser);
+  console.log({ githubUser });
 
   const {
     avatar_url,
@@ -21,6 +21,7 @@ const Card = () => {
     location,
     twitter_username,
   } = githubUser;
+
   return (
     <Wrapper>
       <header>

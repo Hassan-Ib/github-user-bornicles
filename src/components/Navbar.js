@@ -3,9 +3,7 @@ import styled from "styled-components";
 import { useGithubContext } from "../context/context";
 import githubLogo from "../images/github.svg";
 const Navbar = () => {
-  // console.log(isAuthenticated, user, isLoading);
   const { requestRate } = useGithubContext();
-  console.log(window.location.origin);
   return (
     <Wrapper>
       <img src={githubLogo} alt="github logo" />

@@ -12,6 +12,9 @@ import { useGithubContext } from "../context/context";
 
 const Dashboard = () => {
   const { isLoading, error } = useGithubContext();
+
+  console.log("redering several times");
+
   if (isLoading) {
     return <Loader />;
   }

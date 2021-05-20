@@ -18,6 +18,7 @@ const GithubProvider = ({ children }) => {
       toggleError();
       setIsloading(true);
       const response = await axios(`${rootUrl}/users/${user}`);
+      console.log({ response });
 
       if (response) {
         setGithubUser(response.data);
@@ -40,8 +41,11 @@ const GithubProvider = ({ children }) => {
 
       setIsloading(false);
     } catch (error) {
-      toggleError(true, "there is no user with that UserName!.");
+      setGithubUser(null);
+      setFollowers(null);
+      setRepos(null);
       setIsloading(false);
+      toggleError(true, `${error.message}`);
     }
   };
 
@@ -75,17 +79,6 @@ const GithubProvider = ({ children }) => {
     checkRequestRate();
   });
 
-  useEffect(() => {
-    let timeOut;
-    if (error.show) {
-      timeOut = setTimeout(toggleError, 1000);
-    }
-    return () => {
-      if (timeOut) {
-        clearTimeout(timeOut);
-      }
-    };
-  });
   return (
     <GithubContext.Provider
       value={{
