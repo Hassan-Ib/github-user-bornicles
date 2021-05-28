@@ -24,7 +24,7 @@ ReactFC.fcRoot(FusionCharts, Chart, FusionTheme);
 // STEP 4 - Creating the DOM element to pass the react-fusioncharts component
 const Pie3D = ({ data }) => {
   const chartConfigs = {
-    type: "pie3d", // The chart type
+    type: "pie2d", // The chart type
     width: "100%", // Width of the chart
     height: "400", // Height of the chart
     dataFormat: "json", // Data type

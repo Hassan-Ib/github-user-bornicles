@@ -50,6 +50,7 @@ const FormControlStyle = styled.form`
 
   background: var(--clr-white);
 
+  box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
   border-radius: 10px;
   padding: 0.5rem;
   width: 70%;
@@ -61,7 +62,6 @@ const FormControlStyle = styled.form`
     outline-color: var(--clr-grey-9);
     letter-spacing: var(--spacing);
     color: var(--clr-grey-3);
-    /* padding: 0.25rem 0.5rem; */
   }
 
   input::placeholder {

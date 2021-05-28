@@ -1,6 +1,7 @@
 import React from "react";
-import { useGithubContext } from "../context/context";
+import { useGithubContext } from "../../context/context";
 import styled from "styled-components";
+import UserWrapper from "./UserWrapper";
 
 const Followers = () => {
   const { followers } = useGithubContext();
@@ -8,7 +9,7 @@ const Followers = () => {
     return <></>;
   }
   return (
-    <Wrapper>
+    <Wrapper content="followers">
       <div className="followers">
         {followers.map((follower, index) => {
           const { avatar_url: img, html_url, login } = follower;
@@ -27,29 +28,7 @@ const Followers = () => {
   );
 };
 
-const Wrapper = styled.article`
-  width: 95%;
-  background: var(--clr-white);
-  border-top-right-radius: var(--radius);
-  border-bottom-left-radius: var(--radius);
-  border-bottom-right-radius: var(--radius);
-  position: relative;
-
-  &::before {
-    content: " followers";
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateY(-100%);
-    background: var(--clr-white);
-    color: var(--clr-grey-5);
-    border-top-right-radius: var(--radius);
-    border-top-left-radius: var(--radius);
-    text-transform: capitalize;
-    padding: 0.5rem 1rem 0 1rem;
-    letter-spacing: var(--spacing);
-    font-size: 1rem;
-  }
+const Wrapper = styled(UserWrapper)`
   .followers {
     overflow: scroll;
     height: 260px;
