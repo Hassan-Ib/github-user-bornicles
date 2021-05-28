@@ -5,7 +5,6 @@ const UserWrapper = ({ children, className, content }) => {
   return (
     <WrapperStyle className={className} content={content}>
       {children}
-      {content}
     </WrapperStyle>
   );
 };
@@ -34,6 +33,7 @@ const WrapperStyle = styled.article`
   border-bottom-right-radius: var(--radius);
   position: relative;
   padding: 0.5rem 1rem;
+  width: 100%;
   ${(props) => (props.content ? pseudoElement : "")}
 `;
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-
+import defaultUser, { userInfo } from "./userInfo";
 const axiosInstance = axios.create({
   baseURL: "https://api.github.com",
   timeout: 10000,
@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
 const GithubContext = React.createContext();
 
 const GithubProvider = ({ children }) => {
-  const [githubUser, setGithubUser] = useState(null);
+  const [githubUser, setGithubUser] = useState(() => userInfo);
   const [repos, setRepos] = useState(null);
   const [followers, setFollowers] = useState(null);
   const [requestRate, setRequestRate] = useState(0);
