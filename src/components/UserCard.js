@@ -71,7 +71,7 @@ const Wrapper = styled.article`
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    column-gap: 1rem;
+    column-gap: 0.5rem;
     margin-bottom: 1rem;
     img {
       width: 75px;

@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
-const rootUrl = "https://api.github.com";
+const axiosInstance = axios.create({
+  baseURL: "https://api.github.com",
+  timeout: 10000,
+});
 
 const GithubContext = React.createContext();
 
@@ -13,18 +16,19 @@ const GithubProvider = ({ children }) => {
   const [isLoading, setIsloading] = useState(false);
   const [error, setError] = useState({ show: false, msg: "" });
 
+  // console.log({ githubUser, repos, followers });
+
   const getGithubUser = async (user) => {
     try {
       toggleError();
       setIsloading(true);
-      const response = await axios(`${rootUrl}/users/${user}`);
-      console.log({ response });
+      const response = await axiosInstance.get(`/users/${user}`);
 
       if (response) {
         setGithubUser(response.data);
         const { login, followers_url } = response.data;
         const results = await Promise.allSettled([
-          axios(`${rootUrl}/users/${login}/repos?per_page=100`),
+          axiosInstance.get(`/users/${login}/repos?per_page=100`),
           axios(`${followers_url}?per_page=100`),
         ]);
 
@@ -40,44 +44,44 @@ const GithubProvider = ({ children }) => {
       }
 
       setIsloading(false);
-    } catch (error) {
+    } catch (err) {
+      console.log(err);
       setGithubUser(null);
       setFollowers(null);
       setRepos(null);
       setIsloading(false);
-      toggleError(true, `${error.message}`);
+      toggleError(true, `${err.message}`);
     }
   };
 
   //check rate
-
-  const checkRequestRate = async () => {
-    try {
-      const res = await axios(`${rootUrl}/rate_limit`);
-      let {
-        data: {
-          rate: { remaining },
-        },
-      } = res;
-      setRequestRate(remaining);
-      if (remaining === 0) {
-        toggleError(
-          true,
-          "sorry, you've exceeded your hourly request limit :)!."
-        );
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   function toggleError(show = false, msg = "") {
     setError({ show, msg });
   }
 
   useEffect(() => {
+    const checkRequestRate = async () => {
+      try {
+        const res = await axiosInstance.get(`/rate_limit`);
+        let {
+          data: {
+            rate: { remaining },
+          },
+        } = res;
+        setRequestRate(remaining);
+        if (remaining === 0) {
+          toggleError(
+            true,
+            "sorry, you've exceeded your hourly request limit :)!."
+          );
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
     checkRequestRate();
-  });
+  }, [githubUser]);
 
   return (
     <GithubContext.Provider

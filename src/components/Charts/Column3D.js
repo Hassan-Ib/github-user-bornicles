@@ -25,13 +25,13 @@ ReactFC.fcRoot(FusionCharts, Chart, FusionTheme);
 const Column3D = ({ data }) => {
   const chartConfigs = {
     type: "column3d", // The chart type
-    width: "100%", // Width of the chart
+    width: "80%", // Width of the chart
     height: "400", // Height of the chart
     dataFormat: "json", // Data type
     dataSource: {
       // Chart Configuration
       chart: {
-        caption: "Most Popular Language",
+        caption: "Most Popular projects",
         yAxisName: "Stars",
         xAxisName: "Repos",
         xAxisFontSize: "16px",

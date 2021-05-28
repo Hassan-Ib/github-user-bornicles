@@ -37,7 +37,8 @@ const SearchModalWrapper = styled.section`
 `;
 
 const SearchInput = styled(Search)`
-  border: 2px solid black;
+  /* border: 2px solid black; */
+  background-color: var(--clr-grey-9);
 `;
 
 const Modal = styled.div`

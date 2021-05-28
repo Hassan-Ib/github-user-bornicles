@@ -5,10 +5,12 @@ import gitImage from "../images/github.svg";
 import { useGithubContext } from "../context/context";
 const Error = () => {
   const { error } = useGithubContext();
+
   return (
     <StyledSection>
       <img src={gitImage} alt="githun logo" />
       <p>{error.msg}</p>
+      <p>{error.msg === "Network Error" ? "network" : "NOT NETWORK"}</p>
       <Link to="/" type="button">
         back home
       </Link>
