@@ -25,10 +25,12 @@ const Dashboard = () => {
   return (
     <main>
       <Navbar />
-      <Search />
-      <Info />
-      <User />
-      <Repos />
+      <div className="section-center">
+        <Search />
+        <Info />
+        <User />
+        <Repos />
+      </div>
     </main>
   );
 };

@@ -33,7 +33,9 @@ const WrapperStyle = styled.article`
   border-bottom-right-radius: var(--radius);
   position: relative;
   padding: 0.5rem 1rem;
+  min-width: 270px;
   width: 100%;
+
   ${(props) => (props.content ? pseudoElement : "")}
 `;
 

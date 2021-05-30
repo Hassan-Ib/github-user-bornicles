@@ -56,7 +56,7 @@ const Repos = () => {
   console.log(languages);
   return (
     <section className="section">
-      <Wrapper className="section-center">
+      <Wrapper>
         <Pie3D data={mostUsed} />
         <Column3D data={stars} />
         <Doughnut2D data={mostPopular} />

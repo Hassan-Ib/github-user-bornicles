@@ -58,5 +58,13 @@ const Wrapper = styled(UserWrapper)`
       color: var(--clr-grey-5);
     }
   }
+  @media screen and (max-width: 698px) {
+    .followers {
+      padding: 1rem 0.5rem;
+    }
+    article {
+      padding: 0.15rem 0;
+    }
+  }
 `;
 export default Followers;

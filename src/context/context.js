@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import defaultUser, { userInfo } from "./userInfo";
+import { userInfo } from "./userInfo";
 const axiosInstance = axios.create({
   baseURL: "https://api.github.com",
   timeout: 10000,

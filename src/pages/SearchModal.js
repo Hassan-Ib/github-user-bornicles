@@ -18,38 +18,14 @@ const SearchModal = () => {
   );
 };
 
-const SearchModalFooter = styled(Footer)`
-  display: grid;
-  place-items: center;
-
-  position: absolute;
-  bottom: 0;
-
-  padding: 0 1rem;
-`;
 const SearchModalWrapper = styled.section`
   display: grid;
   place-items: center;
 
-  height: 90vh;
+  height: 95vh;
 
   position: relative;
-`;
-
-const SearchInput = styled(Search)`
-  background-color: var(--clr-grey-9);
-`;
-
-const Modal = styled.div`
-  display: grid;
-  place-items: center;
-  img {
-    margin-bottom: 2rem;
-    height: 20vh;
-  }
-  svg {
-    color: black;
-  }
+  /* try and error */
 `;
 
 const Overlay = styled.div`
@@ -59,4 +35,38 @@ const Overlay = styled.div`
   position: fixed;
   z-index: -1;
 `;
+
+const SearchInput = styled(Search)`
+  background-color: var(--clr-grey-9);
+  width: 100%;
+`;
+
+const Modal = styled.div`
+  max-width: 50rem;
+  width: 70%;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  img {
+    margin-bottom: 2rem;
+    height: 20vh;
+  }
+  svg {
+    color: black;
+  }
+
+  @media screen and (max-width: 698px) {
+    width: 95%;
+  }
+`;
+
+const SearchModalFooter = styled(Footer)`
+  display: grid;
+  place-items: center;
+
+  position: absolute;
+  bottom: 0;
+
+  padding: 0 1rem;
+`;
+
 export default SearchModal;

@@ -6,7 +6,7 @@ import { useHistory, useLocation } from "react-router";
 import { useMediaQuery } from "react-responsive";
 
 const Search = ({ className }) => {
-  const maxWidth699 = useMediaQuery({ maxWidth: 698 });
+  const maxWidth698 = useMediaQuery({ maxWidth: 698 });
   // console.log(media);
 
   const inputRef = React.useRef();
@@ -30,19 +30,18 @@ const Search = ({ className }) => {
   };
 
   return (
-    <Wrapper className="section-center">
-      <FormControlStyle className={className} action="" onSubmit={handleSubmit}>
-        {!maxWidth699 && <MdSearch></MdSearch>}
-        <input type="text" ref={inputRef} placeholder="enter github user" />
-        {requestRate > 0 && !isLoading && (
-          <button type="submit">{maxWidth699 ? <MdSearch /> : "search"}</button>
-        )}
-      </FormControlStyle>
-    </Wrapper>
+    <FormControlStyle className={className} action="" onSubmit={handleSubmit}>
+      {!maxWidth698 && <MdSearch></MdSearch>}
+      <input type="text" ref={inputRef} placeholder="enter github user" />
+      {requestRate > 0 && !isLoading && (
+        <button type="submit">{maxWidth698 ? <MdSearch /> : "search"}</button>
+      )}
+    </FormControlStyle>
   );
 };
 
 const FormControlStyle = styled.form`
+  max-width: 45rem;
   display: grid;
   grid-template-columns: auto 1fr auto;
   column-gap: 0.5rem;
@@ -53,7 +52,6 @@ const FormControlStyle = styled.form`
   box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
   border-radius: 10px;
   padding: 0.5rem;
-  width: 70%;
   margin: 0 auto;
   margin-bottom: 1rem;
 
@@ -97,7 +95,6 @@ const FormControlStyle = styled.form`
   }
 
   @media (max-width: 698px) {
-    width: 95%;
     grid-template-columns: 1fr auto;
 
     button,
@@ -135,6 +132,7 @@ const FormControlStyle = styled.form`
 const Wrapper = styled.div`
   position: relative;
   display: grid;
+  border: 2px solid black;
   @media (min-width: 768px) {
     grid-template-columns: 1fr max-content;
   }

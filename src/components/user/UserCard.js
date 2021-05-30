@@ -54,6 +54,7 @@ const Wrapper = styled(UserWrapper)`
     align-items: center;
     column-gap: 0.5rem;
     margin-bottom: 1rem;
+    /* border: 2px solid red; */
     img {
       width: 75px;
       height: 75px;
@@ -102,6 +103,18 @@ const Wrapper = styled(UserWrapper)`
       }
       &:hover {
         color: var(--clr-primary-3);
+      }
+    }
+  }
+  @media screen and (max-width: 467px) {
+    header {
+      grid-template-columns: auto 1fr;
+
+      a {
+        grid-column: 1/3;
+        text-align: center;
+        margin-top: 0.5rem;
+        border-radius: 10px;
       }
     }
   }
