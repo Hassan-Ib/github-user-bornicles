@@ -67,8 +67,8 @@ const Wrapper = styled(UserWrapper)`
       margin-bottom: 0;
     }
     a {
-      color: var(--clr-primary-5);
-      border: 1px solid var(--clr-primary-5);
+      color: var(--clr-black);
+      border: 1px solid var(--clr-black);
       padding: 0.25rem 0.75rem;
       border-radius: 1rem;
       text-transform: capitalize;
@@ -76,7 +76,7 @@ const Wrapper = styled(UserWrapper)`
       transition: var(--transition);
       cursor: pointer;
       &:hover {
-        background: var(--clr-primary-5);
+        background: var(--clr-black);
         color: var(--clr-white);
       }
     }

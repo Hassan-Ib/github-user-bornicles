@@ -6,12 +6,15 @@ import {
   User,
   Search,
   Navbar,
-  Error,
+  // Error,
 } from "../components";
 import { useGithubContext } from "../context/context";
+import { useHistory } from "react-router";
 
 const Dashboard = () => {
   const { isLoading, error } = useGithubContext();
+
+  const history = useHistory();
 
   console.log("redering several times");
 
@@ -19,7 +22,8 @@ const Dashboard = () => {
     return <Loader />;
   }
   if (error.show) {
-    return <Error />;
+    history.push("/error");
+    // return <Error />;
   }
 
   return (

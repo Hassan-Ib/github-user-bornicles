@@ -129,13 +129,4 @@ const FormControlStyle = styled.form`
   }
 `;
 
-const Wrapper = styled.div`
-  position: relative;
-  display: grid;
-  border: 2px solid black;
-  @media (min-width: 768px) {
-    grid-template-columns: 1fr max-content;
-  }
-`;
-
 export default Search;

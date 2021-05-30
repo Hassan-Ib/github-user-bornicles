@@ -17,7 +17,7 @@ const pseudoElement = css`
     left: 0;
     transform: translateY(-100%);
     background: var(--clr-white);
-    color: var(--clr-grey-5);
+    color: var(--clr-black);
     border-top-right-radius: var(--radius);
     border-top-left-radius: var(--radius);
     text-transform: capitalize;
