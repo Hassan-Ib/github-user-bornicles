@@ -110,6 +110,9 @@ p {
   margin-bottom: 1.25rem;
   color: var(--clr-grey-5);
 }
+.btn:disabled {
+  opacity: 0.4;
+}
 @media screen and (min-width: 800px) {
   h1 {
     font-size: 4rem;

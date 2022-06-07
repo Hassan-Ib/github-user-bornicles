@@ -24,12 +24,15 @@ const Repos = () => {
     return total;
   }, {});
 
+  // console.log("languages", languages);
+
   const mostUsed = Object.values(languages)
     .sort((a, b) => {
       return b.value - a.value;
     })
     .slice(0, 5);
 
+  // console.log("mostUsed", mostUsed);
   // most star per languages
   const mostPopular = Object.values(languages)
     .sort((a, b) => {
@@ -58,6 +61,7 @@ const Repos = () => {
     <section className="section">
       <Wrapper>
         <Pie3D data={mostUsed} />
+        {/* <PieChart data={mostUsed} /> */}
         <Column3D data={stars} />
         <Doughnut2D data={mostPopular} />
         <Bar3D data={forks} />

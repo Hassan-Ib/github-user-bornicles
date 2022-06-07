@@ -33,9 +33,9 @@ const Search = ({ className }) => {
     <FormControlStyle className={className} action="" onSubmit={handleSubmit}>
       {!maxWidth698 && <MdSearch></MdSearch>}
       <input type="text" ref={inputRef} placeholder="enter github user" />
-      {requestRate > 0 && !isLoading && (
-        <button type="submit">{maxWidth698 ? <MdSearch /> : "search"}</button>
-      )}
+      <button disabled={requestRate < 1 && isLoading} type="submit">
+        {maxWidth698 ? <MdSearch /> : "search"}
+      </button>
     </FormControlStyle>
   );
 };
@@ -47,10 +47,11 @@ const FormControlStyle = styled.form`
   column-gap: 0.5rem;
   align-items: center;
 
-  background: var(--clr-white);
+  /* background: var(--clr-white); */
 
   box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
   border-radius: 10px;
+  border: 2px solid red;
   padding: 0.5rem;
   margin: 0 auto;
   margin-bottom: 1rem;
@@ -60,12 +61,14 @@ const FormControlStyle = styled.form`
     outline-color: var(--clr-grey-9);
     letter-spacing: var(--spacing);
     color: var(--clr-grey-3);
+    padding: 0.5rem;
   }
 
   input::placeholder {
     color: var(--clr-grey-3);
     text-transform: capitalize;
     letter-spacing: var(--spacing);
+    /* font-size: 1rem; */
   }
 
   button {

@@ -25,6 +25,8 @@ const SearchModalWrapper = styled.section`
   height: 95vh;
 
   position: relative;
+
+  border: 1px solid red;
   /* try and error */
 `;
 
@@ -37,7 +39,7 @@ const Overlay = styled.div`
 `;
 
 const SearchInput = styled(Search)`
-  background-color: var(--clr-grey-9);
+  /* background-color: var(--clr-grey-9); */
   width: 100%;
 `;
 
